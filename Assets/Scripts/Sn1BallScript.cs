@@ -20,6 +20,8 @@ public class Sn1BallScript : MonoBehaviour
     public GameObject venusPanel;
     public GameObject earthPanel;
 
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -83,6 +85,8 @@ public class Sn1BallScript : MonoBehaviour
             gm.UpdateNumberOfBricks();
             
             sunPanel.SetActive(true);
+            //0521
+            //sunPanel.transform.GetChild(0).gameObject.GetComponent<Animation>().Play("Panel_Popup");
             isPaused = true;
             Time.timeScale = 0f;
         }
