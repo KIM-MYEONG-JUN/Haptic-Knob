@@ -1,29 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.Video;
 
 public class Sn1BallScript : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public Transform paddle;
-    public float speed;
+    private float speed = 550;
 
     public bool inPlay;
-    public bool isPaused;
 
     public GameManager gm; // Game Manager 포함관계
-    public PaddleScript ps;
-    public IntroScript it;
+    private PaddleScript ps;
+    private IntroScript it;
 
     public GameObject sunPanel;
     public GameObject mercuryPanel;
     public GameObject venusPanel;
     public GameObject earthPanel;
 
-    
+    public AudioSource audioSource;
+
+    public Animation anim;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         ps = FindObjectOfType<PaddleScript>();
         it = FindObjectOfType<IntroScript>();
@@ -47,16 +50,6 @@ public class Sn1BallScript : MonoBehaviour
             rb.AddForce(Vector2.up * speed); // y축 방향으로 공이 튀어 오름
         }
 
-        if (isPaused && Input.GetKeyDown(KeyCode.Space))
-        {
-            isPaused = false;
-            sunPanel.SetActive(false);
-            mercuryPanel.SetActive(false);
-            venusPanel.SetActive(false);
-            earthPanel.SetActive(false);
-            Time.timeScale = 1f;
-        }
-
         if (!it.isClose) // isClose가 false일 때
             return; // 게임 시작하지 않도록 함수 종료
     }
@@ -74,48 +67,125 @@ public class Sn1BallScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        audioSource.Play();
+
         if (other.transform.CompareTag("Brick"))
         {
             Destroy(other.gameObject);
-            gm.UpdateNumberOfBricks();
         }
         else if (other.transform.CompareTag("Sun Brick"))
         {
             Destroy(other.gameObject);
-            gm.UpdateNumberOfBricks();
-            
+
+            inPlay = false;
+            rb.velocity = Vector2.zero;
+
             sunPanel.SetActive(true);
-            //0521
-            //sunPanel.transform.GetChild(0).gameObject.GetComponent<Animation>().Play("Panel_Popup");
-            isPaused = true;
-            Time.timeScale = 0f;
+            anim.Play("Open");
+            StartCoroutine(PlaySunVideo());
         }
         else if (other.transform.CompareTag("Mercury Brick"))
         {
             Destroy(other.gameObject);
-            gm.UpdateNumberOfBricks();
+
+            inPlay = false;
+            rb.velocity = Vector2.zero;
 
             mercuryPanel.SetActive(true);
-            isPaused = true;
-            Time.timeScale = 0f;
+            anim.Play("Open");
+            StartCoroutine(PlayMercuryVideo());
         }
         else if (other.transform.CompareTag("Venus Brick"))
         {
             Destroy(other.gameObject);
-            gm.UpdateNumberOfBricks();
+
+            inPlay = false;
+            rb.velocity = Vector2.zero;
 
             venusPanel.SetActive(true);
-            isPaused = true;
-            Time.timeScale = 0f;
+            anim.Play("Open");
+            StartCoroutine(PlayVenusVideo());
         }
         else if (other.transform.CompareTag("Earth Brick"))
         {
             Destroy(other.gameObject);
-            gm.UpdateNumberOfBricks();
 
+            inPlay = false;
+            rb.velocity = Vector2.zero;
+          
             earthPanel.SetActive(true);
-            isPaused = true;
-            Time.timeScale = 0f;
+            anim.Play("Open");
+            StartCoroutine(PlayEarthVideo());
         }
     }
+
+    private IEnumerator PlaySunVideo()
+    {
+        // 비디오의 길이만큼 기다림
+        yield return new WaitForSeconds(2f);
+
+        gm.UpdateNumberOfBricks();
+
+        // 비디오 재생 종료 후 실행될 코드
+        anim.Play("Close");
+        sunPanel.SetActive(false);
+    }
+
+    private IEnumerator PlayMercuryVideo()
+    {
+        // 비디오의 길이만큼 기다림
+        yield return new WaitForSeconds(2f);
+
+        gm.UpdateNumberOfBricks();
+
+        // 비디오 재생 종료 후 실행될 코드
+        anim.Play("Close");
+        mercuryPanel.SetActive(false);
+    }
+
+    private IEnumerator PlayVenusVideo()
+    {
+        // 비디오의 길이만큼 기다림
+        yield return new WaitForSeconds(2f);
+
+        gm.UpdateNumberOfBricks();
+
+        // 비디오 재생 종료 후 실행될 코드
+        anim.Play("Close");
+        venusPanel.SetActive(false);
+    }
+
+    private IEnumerator PlayEarthVideo()
+    {
+        // 비디오의 길이만큼 기다림
+        yield return new WaitForSeconds(2f);
+
+        gm.UpdateNumberOfBricks();
+
+        // 비디오 재생 종료 후 실행될 코드
+        anim.Play("Close");
+        earthPanel.SetActive(false);
+    }
+
+    /*
+     *     private IEnumerator PlayVideoAndWait()
+    {
+        // 비디오 재생
+        // videoPlayer.Play();
+
+        // 비디오의 길이를 가져옴
+        // float videoLength = (float)videoPlayer.length;
+
+        // 비디오의 길이만큼 기다림
+        yield return new WaitForSeconds(2f);
+
+        gm.UpdateNumberOfBricks();
+
+        // 비디오 재생 종료 후 실행될 코드
+        sunPanel.SetActive(false);
+        mercuryPanel.SetActive(false);
+        venusPanel.SetActive(false);
+        earthPanel.SetActive(false);
+    }
+     */
 }

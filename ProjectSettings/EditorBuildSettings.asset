@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ch2.Space.unity
     guid: 47e7409e957e2054fa872a2146c9b786
+  - enabled: 1
+    path: Assets/Scenes/Ch1.Dino.unity
+    guid: 5491b8bce5bfc2841b0b66d13a7fc091
+  - enabled: 1
+    path: Assets/Scenes/Ch1.Animal.unity
+    guid: 588c81db2051f9f4c8564c4181267cbf
   m_configObjects: {}

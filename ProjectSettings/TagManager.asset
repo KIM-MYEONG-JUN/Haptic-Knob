@@ -9,7 +9,6 @@ TagManager:
   - Ball
   - Bottom
   - Attack
-  - Haptic Brick
   - Mars Brick
   - Jupiter Brick
   - Saturn Brick
@@ -17,6 +16,10 @@ TagManager:
   - Mercury Brick
   - Venus Brick
   - Earth Brick
+  - Repair
+  - Haptic Brick2
+  - Haptic Brick1
+  - Haptic Brick3
   layers:
   - Default
   - TransparentFX

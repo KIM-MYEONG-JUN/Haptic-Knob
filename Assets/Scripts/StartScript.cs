@@ -10,4 +10,16 @@ public class StartScript : MonoBehaviour
         SceneManager.LoadScene("Ch1.Space"); // Scene 이돌
         Debug.Log("우주");
     }
+
+    public void Animal()
+    {
+        SceneManager.LoadScene("Ch1.Animal"); // Scene 이돌
+        Debug.Log("동물");
+    }
+
+    public void Dino()
+    {
+        SceneManager.LoadScene("Ch1.Dino"); // Scene 이돌
+        Debug.Log("공룡");
+    }
 }

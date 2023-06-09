@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public int life; // 라이프
     public Text lifeText; // 라이프 텍스트
+
     public bool gameOver; // 게임 오버 판단
+
     public GameObject gameOverPanel; // 게임 오버 창
     public GameObject gameClearPanel; // 게임 클리어 창
+
     public int sumOfBricks; // 벽돌 개수 총합
 
     void Start()
@@ -22,14 +25,11 @@ public class GameManager : MonoBehaviour
 
         if (sceneName == "Ch1.Space")
         {
-            int numberOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
-            sumOfBricks = numberOfBricks + 4;
+            sumOfBricks = 4;
         }
         else if (sceneName == "Ch2.Space")
         {
-            int numberOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
-            int numberOfHapticBricks = GameObject.FindGameObjectsWithTag("Haptic Brick").Length;
-            sumOfBricks = numberOfBricks + numberOfHapticBricks + 3; // 벽돌 개수의 총합
+            sumOfBricks = 3; // 벽돌 개수의 총합
         }
     }
 
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         sumOfBricks -= 1; // 벽돌 개수 감소
         if (sumOfBricks <= 0) // 벽돌 개수가 0 이하가 되었을 때
         {
+            Debug.Log("1111");
             GameClear(); // 게임 클리어
         }
     }
@@ -67,25 +68,18 @@ public class GameManager : MonoBehaviour
         gameClearPanel.SetActive(true); // 게임 클리어 패널 활성화
     }
 
-    public void Replay1()
+    public void Space1()
     {
         SceneManager.LoadScene("Ch1.Space"); // Scene 이동
     }
 
-    public void Replay2()
+    public void Space2()
     {
         SceneManager.LoadScene("Ch2.Space"); // Scene 이동
     }
 
-    public void Exit()
+    public void Middle1()
     {
-       Application.Quit(); // 게임 종료
-       Debug.Log("Game Quit");
-    }
-
-    public void Next()
-    {
-        SceneManager.LoadScene("Ch2.Space"); // Scene 이돌
-        Debug.Log("Next");
+        SceneManager.LoadScene("Inner Planet"); // Scene 이동
     }
 }

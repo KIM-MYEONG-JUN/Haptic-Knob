@@ -5,21 +5,15 @@ using UnityEngine.Video;
 public class VideoPlayerController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public GameObject uiPanel;
+    public bool isOver = false;
 
     private void Start()
     {
         videoPlayer.loopPointReached += OnVideoEnd;
     }
 
-    public void PlayVideo()
-    {
-        uiPanel.SetActive(true);
-        videoPlayer.Play();
-    }
-
     private void OnVideoEnd(VideoPlayer vp)
     {
-        uiPanel.SetActive(false);
+        isOver = true;
     }
 }
