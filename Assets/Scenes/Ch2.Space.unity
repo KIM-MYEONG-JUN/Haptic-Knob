@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 241962185}
   - component: {fileID: 241962187}
   m_Layer: 0
-  m_Name: Brick (9)
+  m_Name: Brick_mars
   m_TagString: Mars Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 285173844}
   - component: {fileID: 285173843}
   m_Layer: 0
-  m_Name: Brick (14)
+  m_Name: Brick_haptic3
   m_TagString: Haptic Brick3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1475,7 +1475,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &456629249
 VideoPlayer:
@@ -1600,7 +1600,7 @@ Animation:
   - {fileID: 7400000, guid: b16dce9e0c89a5e4695a7d12a75b83c5, type: 2}
   - {fileID: 7400000, guid: c1aaa69c8420dd643962cebb65f4c5ef, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &471436254
@@ -2639,7 +2639,7 @@ GameObject:
   - component: {fileID: 965742877}
   - component: {fileID: 965742876}
   m_Layer: 0
-  m_Name: Brick (22)
+  m_Name: Brick_haptic2
   m_TagString: Haptic Brick2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2954,7 +2954,7 @@ GameObject:
   - component: {fileID: 1140709364}
   - component: {fileID: 1140709363}
   m_Layer: 0
-  m_Name: Brick (10)
+  m_Name: Brick_haptic1
   m_TagString: Haptic Brick1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3414,7 +3414,7 @@ GameObject:
   - component: {fileID: 1231264875}
   - component: {fileID: 1231264877}
   m_Layer: 0
-  m_Name: Brick (1)
+  m_Name: Brick_jupiter
   m_TagString: Jupiter Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4090,7 +4090,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &1371258654
 VideoPlayer:
@@ -4801,7 +4801,7 @@ GameObject:
   - component: {fileID: 1537618617}
   - component: {fileID: 1537618615}
   m_Layer: 0
-  m_Name: Brick (16)
+  m_Name: Brick_saturn
   m_TagString: Saturn Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5690,7 +5690,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!328 &1792103902
 VideoPlayer:
