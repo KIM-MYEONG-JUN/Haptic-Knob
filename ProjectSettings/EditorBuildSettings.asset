@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Intro.unity
-    guid: 9e5b3c1e16f2b7342abcb5b637931b7f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Ch1.Space.unity
     guid: 97eff747c43cab040bb35e59f33ee616
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ch1.Animal.unity
     guid: 588c81db2051f9f4c8564c4181267cbf
+  - enabled: 1
+    path: Assets/Scenes/Inner Planet.unity
+    guid: c0da042949c62e34f9f1338e509f8605
+  - enabled: 1
+    path: Assets/Scenes/Outer Planet.unity
+    guid: a74a3a99bf34dd840860feac18c228b3
   m_configObjects: {}

@@ -67,53 +67,60 @@ public class Sn1BallScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        audioSource.Play();
-
         if (other.transform.CompareTag("Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
         }
         else if (other.transform.CompareTag("Sun Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
 
             inPlay = false;
             rb.velocity = Vector2.zero;
 
             sunPanel.SetActive(true);
+            anim = sunPanel.GetComponent<Animation>();
             anim.Play("Open");
             StartCoroutine(PlaySunVideo());
         }
         else if (other.transform.CompareTag("Mercury Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
 
             inPlay = false;
             rb.velocity = Vector2.zero;
 
             mercuryPanel.SetActive(true);
+            anim = mercuryPanel.GetComponent<Animation>();
             anim.Play("Open");
             StartCoroutine(PlayMercuryVideo());
         }
         else if (other.transform.CompareTag("Venus Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
 
             inPlay = false;
             rb.velocity = Vector2.zero;
 
             venusPanel.SetActive(true);
+            anim = venusPanel.GetComponent<Animation>();
             anim.Play("Open");
             StartCoroutine(PlayVenusVideo());
         }
         else if (other.transform.CompareTag("Earth Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
 
             inPlay = false;
             rb.velocity = Vector2.zero;
           
             earthPanel.SetActive(true);
+            anim = earthPanel.GetComponent<Animation>();
             anim.Play("Open");
             StartCoroutine(PlayEarthVideo());
         }
@@ -122,48 +129,56 @@ public class Sn1BallScript : MonoBehaviour
     private IEnumerator PlaySunVideo()
     {
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
 
         gm.UpdateNumberOfBricks();
 
         // 비디오 재생 종료 후 실행될 코드
+        anim = sunPanel.GetComponent<Animation>();
         anim.Play("Close");
+        yield return new WaitForSeconds(1f);
         sunPanel.SetActive(false);
     }
 
     private IEnumerator PlayMercuryVideo()
     {
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
 
         gm.UpdateNumberOfBricks();
 
         // 비디오 재생 종료 후 실행될 코드
+        anim = mercuryPanel.GetComponent<Animation>();
         anim.Play("Close");
+        yield return new WaitForSeconds(1f);
         mercuryPanel.SetActive(false);
     }
 
     private IEnumerator PlayVenusVideo()
     {
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
 
         gm.UpdateNumberOfBricks();
 
         // 비디오 재생 종료 후 실행될 코드
+        anim = venusPanel.GetComponent<Animation>();
         anim.Play("Close");
+        yield return new WaitForSeconds(1f);
         venusPanel.SetActive(false);
     }
 
     private IEnumerator PlayEarthVideo()
     {
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(10f);
 
         gm.UpdateNumberOfBricks();
 
         // 비디오 재생 종료 후 실행될 코드
+        anim = earthPanel.GetComponent<Animation>();
         anim.Play("Close");
+        yield return new WaitForSeconds(1f);
         earthPanel.SetActive(false);
     }
 

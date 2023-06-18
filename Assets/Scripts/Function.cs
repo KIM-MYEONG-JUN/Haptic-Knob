@@ -93,6 +93,9 @@ public class Function : MonoBehaviour
     }
     public void Plus()
     {
-        ScriptText.text = Mode_Text;
+        if (!ScriptText != null)
+        {
+            ScriptText.text = Mode_Text;
+        }
     }
 }

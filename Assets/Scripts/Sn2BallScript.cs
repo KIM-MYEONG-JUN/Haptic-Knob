@@ -8,7 +8,7 @@ public class Sn2BallScript : MonoBehaviour
     public Transform paddle;
     private float speed = 550;
 
-    public bool inPlay;
+    private bool inPlay;
 
     public GameManager gm; // Game Manager 포함관계
     private PaddleScript ps;
@@ -23,7 +23,11 @@ public class Sn2BallScript : MonoBehaviour
 
     public AudioSource audioSource;
 
+    public GameObject knob;
+
     public Animation anim;
+
+    public bool isOpenVideo = false;
 
     void Start()
     {
@@ -69,17 +73,18 @@ public class Sn2BallScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        audioSource.Play();
-
         if (other.transform.CompareTag("Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
         }
         else if (other.transform.CompareTag("Mars Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
             if (at.isAttack) Instantiate(repair, transform.position, transform.rotation);
 
+            isOpenVideo = true;
             inPlay = false;
             rb.velocity = Vector2.zero;
 
@@ -91,9 +96,11 @@ public class Sn2BallScript : MonoBehaviour
         }
         else if (other.transform.CompareTag("Saturn Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
             if (at.isAttack) Instantiate(repair, transform.position, transform.rotation);
 
+            isOpenVideo = true;
             inPlay = false;
             rb.velocity = Vector2.zero;
 
@@ -104,9 +111,11 @@ public class Sn2BallScript : MonoBehaviour
         }
         else if (other.transform.CompareTag("Jupiter Brick"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
             if (at.isAttack) Instantiate(repair, transform.position, transform.rotation);
 
+            isOpenVideo = true;
             inPlay = false;
             rb.velocity = Vector2.zero;
 
@@ -118,17 +127,23 @@ public class Sn2BallScript : MonoBehaviour
         }
         else if (other.transform.CompareTag("Haptic Brick1"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
+            knob.GetComponent<Function>().OnclickABumpy();
             ps.speed = 7;
         }
         else if (other.transform.CompareTag("Haptic Brick2"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
+            knob.GetComponent<Function>().OnclickBBumpy();
             ps.speed = 5;
         }
         else if (other.transform.CompareTag("Haptic Brick3"))
         {
+            audioSource.Play();
             Destroy(other.gameObject);
+            knob.GetComponent<Function>().OnclickCBumpy();
             ps.speed = 3;
         }
     }
@@ -145,6 +160,7 @@ public class Sn2BallScript : MonoBehaviour
         anim.Play("Close");
         yield return new WaitForSeconds(1f);
         marsPanel.SetActive(false);
+        isOpenVideo = false;
     }
 
     private IEnumerator PlaySaturnVideo()
@@ -159,6 +175,7 @@ public class Sn2BallScript : MonoBehaviour
         anim.Play("Close");
         yield return new WaitForSeconds(1f);
         saturnPanel.SetActive(false);
+        isOpenVideo = false;
     }
 
     private IEnumerator PlayJupiterVideo()
@@ -173,5 +190,6 @@ public class Sn2BallScript : MonoBehaviour
         anim.Play("Close");
         yield return new WaitForSeconds(1f);
         jupiterPanel.SetActive(false);
+        isOpenVideo = false;
     }
 }

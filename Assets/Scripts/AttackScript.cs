@@ -10,16 +10,22 @@ public class AttackScript : MonoBehaviour
     public float delay; // 공격 시작 딜레이
     public bool isAttack;
 
+    private Sn2BallScript b2;
+
     private void Start()
     {
+        b2 = FindObjectOfType<Sn2BallScript >();
         start = new Vector2(transform.position.x, (float)(transform.position.y - 0.5)); // 시작 위치 초기화
         InvokeRepeating("LaunchAttack", delay, interval); // 반복 호출
     }
 
     private void LaunchAttack()
     {
-        GameObject newAttack = Instantiate(attack, start, transform.rotation); // 공격 오브젝트 복제
-        StartCoroutine(MoveAttack(newAttack)); // 코루틴 시작
+        if (b2.isOpenVideo == false)
+        {
+            GameObject newAttack = Instantiate(attack, start, transform.rotation); // 공격 오브젝트 복제
+            StartCoroutine(MoveAttack(newAttack)); // 코루틴 시작
+        }
     }
 
     private IEnumerator MoveAttack(GameObject attack)

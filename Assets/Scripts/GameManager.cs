@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
         if (sceneName == "Ch1.Space")
         {
-            sumOfBricks = 4;
+            sumOfBricks = 3;
         }
         else if (sceneName == "Ch2.Space")
         {
@@ -81,5 +81,10 @@ public class GameManager : MonoBehaviour
     public void Middle1()
     {
         SceneManager.LoadScene("Inner Planet"); // Scene 이동
+    }
+
+    public void Middle2()
+    {
+        SceneManager.LoadScene("Outer Planet"); // Scene 이동
     }
 }

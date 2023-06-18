@@ -9,6 +9,13 @@ public class PaddleScript : MonoBehaviour
     public float leftScreenEdge;
     public GameManager gm;
 
+    public AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Update()
     {
         if (gm.gameOver)
@@ -35,6 +42,7 @@ public class PaddleScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Attack"))
         {
+            audioSource.Play();
             Debug.Log("Attacked!!!"); // 로그 출력
             speed = 5; // 공격 받았을 때의 동작
             Destroy(other.gameObject); // 공격 오브젝트 삭제
@@ -42,6 +50,7 @@ public class PaddleScript : MonoBehaviour
 
         if (other.gameObject.CompareTag("Repair"))
         {
+            audioSource.Play();
             Debug.Log("Repaired!!!"); // 로그 출력
             speed = 10; // 아이템을 획득했을 때의 동작
             Destroy(other.gameObject); // 아이템 오브젝트 삭제
