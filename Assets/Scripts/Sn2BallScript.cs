@@ -29,8 +29,11 @@ public class Sn2BallScript : MonoBehaviour
 
     public bool isOpenVideo = false;
 
+    private GameObject camera;
+
     void Start()
     {
+        camera = GameObject.Find("Main Camera");
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         ps = FindObjectOfType<PaddleScript>();
@@ -69,6 +72,16 @@ public class Sn2BallScript : MonoBehaviour
             inPlay = false; // 게임 종료
             gm.UpdateLife(1);
         }
+    }
+
+    private void Sound_low()
+    {
+        camera.GetComponent<AudioSource>().volume = 0.4f;
+    }
+
+    private void Sound_HIgh()
+    {
+        camera.GetComponent<AudioSource>().volume = 1.0f;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -150,45 +163,48 @@ public class Sn2BallScript : MonoBehaviour
 
     private IEnumerator PlayMarsVideo()
     {
+        Sound_low();
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(10f);
-
-        gm.UpdateNumberOfBricks();
+        yield return new WaitForSeconds(36f);
 
         // 비디오 재생 종료 후 실행될 코드
         anim = marsPanel.GetComponent<Animation>();
         anim.Play("Close");
+        Sound_HIgh();
         yield return new WaitForSeconds(1f);
+        gm.UpdateNumberOfBricks();
         marsPanel.SetActive(false);
         isOpenVideo = false;
     }
 
     private IEnumerator PlaySaturnVideo()
     {
+        Sound_low();
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(10f);
-
-        gm.UpdateNumberOfBricks();
+        yield return new WaitForSeconds(21.8f);
 
         // 비디오 재생 종료 후 실행될 코드
         anim = saturnPanel.GetComponent<Animation>();
         anim.Play("Close");
+        Sound_HIgh();
         yield return new WaitForSeconds(1f);
+        gm.UpdateNumberOfBricks();
         saturnPanel.SetActive(false);
         isOpenVideo = false;
     }
 
     private IEnumerator PlayJupiterVideo()
     {
+        Sound_low();
         // 비디오의 길이만큼 기다림
         yield return new WaitForSeconds(10f);
-
-        gm.UpdateNumberOfBricks();
 
         // 비디오 재생 종료 후 실행될 코드
         anim = jupiterPanel.GetComponent<Animation>();
         anim.Play("Close");
+        Sound_HIgh();
         yield return new WaitForSeconds(1f);
+        gm.UpdateNumberOfBricks();
         jupiterPanel.SetActive(false);
         isOpenVideo = false;
     }

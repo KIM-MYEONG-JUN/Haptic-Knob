@@ -8,11 +8,13 @@ public class PaddleScript : MonoBehaviour
     public float rightScreenEdge;
     public float leftScreenEdge;
     public GameManager gm;
+    public Function knob;
 
     public AudioSource audioSource;
 
     void Start()
     {
+        knob = FindObjectOfType<Function>();
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -23,10 +25,15 @@ public class PaddleScript : MonoBehaviour
             return;
         }
 
-        float horizontal = Input.GetAxis("Horizontal"); // 키보드 a, d /  <-, -> 입력
+        if (knob.count >= 1)
+        {
+            transform.position += Vector3.right * speed * Time.deltaTime;
+        }
+        if (knob.count <= -1)
+        {
+            transform.position += Vector3.left * speed * Time.deltaTime;
+        }
 
-        transform.Translate (Vector2.right * horizontal * Time.deltaTime * speed); // 속도 계산
-        
         if (transform.position.x < leftScreenEdge) // x축을 기준으로 화면 왼쪽 밖으로 벗어날 때
         {
             transform.position = new Vector2(leftScreenEdge, transform.position.y); // leftScreenEdge의 좌표에 포지션 고정
@@ -53,6 +60,7 @@ public class PaddleScript : MonoBehaviour
             audioSource.Play();
             Debug.Log("Repaired!!!"); // 로그 출력
             speed = 10; // 아이템을 획득했을 때의 동작
+            knob.OnclickOff();
             Destroy(other.gameObject); // 아이템 오브젝트 삭제
         }
     }

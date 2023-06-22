@@ -22,4 +22,10 @@ public class StartScript : MonoBehaviour
         SceneManager.LoadScene("Ch1.Dino"); // Scene 이돌
         Debug.Log("공룡");
     }
+
+    public void Intro()
+    {
+        SceneManager.LoadScene("Intro"); // Scene 이돌
+        Debug.Log("인트로");
+    }
 }
