@@ -29,7 +29,11 @@ public class GameManager : MonoBehaviour
         }
         else if (sceneName == "Ch2.Space")
         {
-            sumOfBricks = 3; // 벽돌 개수의 총합
+            sumOfBricks = 3;
+        }
+        else if (sceneName == "Ch1.Animal")
+        {
+            sumOfBricks = 6;
         }
     }
 
@@ -51,7 +55,6 @@ public class GameManager : MonoBehaviour
         sumOfBricks -= 1; // 벽돌 개수 감소
         if (sumOfBricks <= 0) // 벽돌 개수가 0 이하가 되었을 때
         {
-            Debug.Log("1111");
             GameClear(); // 게임 클리어
         }
     }
@@ -86,5 +89,10 @@ public class GameManager : MonoBehaviour
     public void Middle2()
     {
         SceneManager.LoadScene("Outer Planet"); // Scene 이동
+    }
+
+    public void Animal1()
+    {
+        SceneManager.LoadScene("Ch1.Animal"); // Scene 이동
     }
 }

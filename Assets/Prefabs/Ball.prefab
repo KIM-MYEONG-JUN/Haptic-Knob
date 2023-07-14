@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2558279076004862414}
   - component: {fileID: 2558279076004862401}
   - component: {fileID: 2558279075033536107}
-  - component: {fileID: 2558279075033536106}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -219,24 +218,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2558279075033536106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2558279076004862400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f38ebd0f093ff94890a15f008437efb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paddle: {fileID: 0}
-  inPlay: 0
-  gm: {fileID: 0}
-  sunPanel: {fileID: 0}
-  mercuryPanel: {fileID: 0}
-  venusPanel: {fileID: 0}
-  earthPanel: {fileID: 0}
-  audioSource: {fileID: 0}
-  anim: {fileID: 0}

@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Brick
-  - Planet Brick
   - Ball
   - Bottom
   - Attack
@@ -20,6 +19,12 @@ TagManager:
   - Haptic Brick2
   - Haptic Brick1
   - Haptic Brick3
+  - Lion Brick
+  - Rabbit Brick
+  - Elephant Brick
+  - Rhino Brick
+  - Giraffa Brick
+  - Monkey Brick
   layers:
   - Default
   - TransparentFX

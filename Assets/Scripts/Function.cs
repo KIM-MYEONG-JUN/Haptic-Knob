@@ -11,15 +11,13 @@ public class Function : MonoBehaviour
     //public static string Comport = "COM7";
     SerialPort m_SerialPort = new SerialPort("COM5", 115200, Parity.None, 8, StopBits.One);
     string m_Data = null;
-    char[] delimiterChars = { '$', ',', '#', ' ' };
-    // public Text ScriptText;
-    
+
+
     string power = null;
     // string Mode_Text = "OFF";
     char dirc;
     int speed = 0;
-    // string[] Mode_Name = {"","Low ticks", "Middle ticks", "High ticks", "OFF" };
-    
+
     int now_loc = 0;
     // int mode = 0;
 
@@ -30,48 +28,41 @@ public class Function : MonoBehaviour
     {
         m_SerialPort.Open();
         // ScriptText.text = "Selected Mode : " + Mode_Name[mode];
-        m_SerialPort.ReadTimeout = 300;
-        m_SerialPort.WriteTimeout = 300;
+        m_SerialPort.ReadTimeout = 100;
+        m_SerialPort.WriteTimeout = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        try
+
+        // ScriptText.text = "Selected Mode : " + Mode_Name[mode];
+        if (m_SerialPort.IsOpen)
         {
-            // ScriptText.text = "Selected Mode : " + Mode_Name[mode];
-            if (m_SerialPort.IsOpen)
+            if (m_SerialPort.BytesToRead > 0) // 버퍼에 읽을 수 있는 바이트가 있는지 확인합니다.
             {
-                m_SerialPort.DiscardInBuffer();
+
                 m_Data = m_SerialPort.ReadLine();
-                // Debug.Log(m_Data);
+                m_SerialPort.DiscardInBuffer();
+                Debug.Log(m_Data);
 
-                // string[] words = m_Data.Split(delimiterChars);
-                // dirc = char.Parse(words[0]);
-                // speed = int.Parse(words[1]);
-                // now_loc = int.Parse(words[2]);
-
-                // Debug.Log(m_Data);
 
                 if (m_Data[0] == 'C')
                 {
-                    count += 1;
-
-                    if (count > 1) count = 0;
+                    count++;
                 }
 
                 if (m_Data[0] == 'W')
                 {
-                    count -= -1;
-
-                    if (count < -1) count = 0;
+                    count--;
                 }
             }
         }
-        catch (Exception e)
+        else
         {
-            // Debug.Log(e);
+            m_SerialPort.Open();
         }
+
     }
 
     public void OnclickABumpy()
@@ -107,7 +98,7 @@ public class Function : MonoBehaviour
     {
         if (m_SerialPort == null)
             return;
-        m_SerialPort.Write("S");;
+        m_SerialPort.Write("S"); ;
         m_SerialPort.Close();
     }
 

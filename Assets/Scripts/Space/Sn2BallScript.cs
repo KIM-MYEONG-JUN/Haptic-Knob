@@ -31,6 +31,8 @@ public class Sn2BallScript : MonoBehaviour
 
     private GameObject camera;
 
+    public int num = 0;
+
     void Start()
     {
         camera = GameObject.Find("Main Camera");
@@ -142,22 +144,28 @@ public class Sn2BallScript : MonoBehaviour
         {
             audioSource.Play();
             Destroy(other.gameObject);
+            anim = camera.GetComponent<Animation>();
+            anim.Play("Camera");
             knob.GetComponent<Function>().OnclickABumpy();
-            ps.speed = 7;
+            num = 1;
         }
         else if (other.transform.CompareTag("Haptic Brick2"))
         {
             audioSource.Play();
             Destroy(other.gameObject);
+            anim = camera.GetComponent<Animation>();
+            anim.Play("Camera");
             knob.GetComponent<Function>().OnclickBBumpy();
-            ps.speed = 5;
+            num = 2;
         }
         else if (other.transform.CompareTag("Haptic Brick3"))
         {
             audioSource.Play();
             Destroy(other.gameObject);
+            anim = camera.GetComponent<Animation>();
+            anim.Play("Camera");
             knob.GetComponent<Function>().OnclickCBumpy();
-            ps.speed = 3;
+            num = 3;
         }
     }
 
@@ -197,7 +205,7 @@ public class Sn2BallScript : MonoBehaviour
     {
         Sound_low();
         // 비디오의 길이만큼 기다림
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(36f);
 
         // 비디오 재생 종료 후 실행될 코드
         anim = jupiterPanel.GetComponent<Animation>();
